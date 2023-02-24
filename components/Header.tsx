@@ -32,7 +32,7 @@ export default function Header({ socials }: Props) {
 					<SocialIcon
 						key={social._id}
 						url={social.url}
-						fgColor='pink'
+						fgColor='#ffcccc'
 						bgColor='transparent'
 					/>
 
@@ -61,7 +61,7 @@ export default function Header({ socials }: Props) {
 						fgColor='pink'
 						bgColor='transparent'
 					/>
-					<p className='uppercase hidden md:inline-flex text-sm text-pink-200'>
+					<p className='uppercase hidden md:inline-flex text-sm text-[#ffcccc]'>
 						Get In Touch
 					</p>
 				</motion.div>

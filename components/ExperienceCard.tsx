@@ -31,7 +31,12 @@ export default function ExperienceCard({ experience }: Props) {
 			/>
 			<div className='px-0 md:px-10'>
 				<h4 className='text-4xl font-light'>{experience?.jobTitle}</h4>
-				<p className='font-bold text-xl mt-1'>Working with:</p>
+				<p className='uppercase py-5 text-gray-200 text-sm'>
+					{new Date(experience.dateStarted).toDateString().replace(/^\S+\s/,'')} - {' '}
+					{new Date(experience.dateEnded).toDateString().replace(/^\S+\s/,'')}
+				</p>
+				<p className='font-bold text-l mt-1'>{experience.company}</p>
+				<p className='text-m mt-1'>Working with:</p>
 				<div className='flex space-x-2 my-2'>
 					{experience.technologies.map((technology) => (
 						<img
@@ -41,11 +46,8 @@ export default function ExperienceCard({ experience }: Props) {
 						/>
 					))}
 				</div>
-				<p className='uppercase py-5 text-gray-200 text-sm'>
-					{new Date(experience.dateStarted).toDateString()} - {' '}
-					{new Date(experience.dateEnded).toDateString()}
-				</p>
-				<ul className='list-disc space-y-4 ml-5 text-lg max-h-96 overflow-y-scroll pr-5 scrollbar-thin scrollbar-track-black scrollbar-thumb-[#F7AB0A]'>
+				
+				<ul className='list-disc space-y-4 ml-5 text-lg max-h-96 overflow-y-scroll pr-5 scrollbar-thin scrollbar-track-black scrollbar-thumb-[#ffcccc]'>
 					{experience.points.map((point, i) => (
 						<li key={i}>{point}</li>
 					))}

@@ -28,8 +28,8 @@ export default {
       of: [{type: 'reference', to: {type: 'skill'}}],
     },
     {
-      name: 'linkToBuild',
-      title: 'LinkToBuild',
+      name: 'pdfFile',
+      title: 'pdfFile',
       type: 'file',
     },
   ],
