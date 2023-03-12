@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { urlFor } from '../sanity';
 import { Project } from '../typings';
+import Image from 'next/image';
 
 type Props = {
 	projects: Project[];
@@ -57,23 +58,25 @@ function Projects({ projects }: Props) {
 							</h4>
 							<br />
 							<h1>
-								<p className='text-center'><a
-									href={project?.linkToBuild}
-									className='underline '
-									target={'_blank'}
-									rel='noreferrer'
-								>
-									For more details click here
-								</a></p>
-								
+								<p className='text-center'>
+									<a
+										href={project?.linkToBuild}
+										className='underline '
+										target={'_blank'}
+										rel='noreferrer'
+									>
+										For more details click here
+									</a>
+								</p>
 							</h1>
 
 							<div className='flex items-center justify-center'>
 								{project?.technologies.map((technology) => (
+									// eslint-disable-next-line @next/next/no-img-element
 									<img
 										className='h-10 w-10 m-2'
-										key={technology._id}
-										src={urlFor(technology.image).url()}
+										key={technology?._id}
+										// src={urlFor(technology?.image).url()}
 										alt='photo for technology'
 									/>
 								))}

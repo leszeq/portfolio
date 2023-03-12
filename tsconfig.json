@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "es5",
+		"target": "ES6",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
 		"skipLibCheck": true,
@@ -19,13 +19,13 @@
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
-		"sanity/schemas/schema.js",
-		"sanity/sanity.config.js",
-		"sanity/schemas/experience.js",
-		"sanity/schemas/pageInfo.js",
-		"sanity/schemas/project.js",
-		"sanity/schemas/skill.js",
-		"sanity/schemas/social.js"
+		"sanity/schemas/schema.ts",
+		"sanity/sanity.config.ts",
+		"sanity/schemas/experience.ts",
+		"sanity/schemas/pageInfo.ts",
+		"sanity/schemas/project.ts",
+		"sanity/schemas/skill.ts",
+		"sanity/schemas/social.ts"
 	],
 	"exclude": ["node_modules"]
 }
