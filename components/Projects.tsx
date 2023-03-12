@@ -70,7 +70,7 @@ function Projects({ projects }: Props) {
 								</p>
 							</h1>
 
-							<div className='flex items-center justify-center'>
+							{/* <div className='flex items-center justify-center'>
 								{project?.technologies.map((technology) => (
 									// eslint-disable-next-line @next/next/no-img-element
 									<img
@@ -80,7 +80,7 @@ function Projects({ projects }: Props) {
 										alt='photo for technology'
 									/>
 								))}
-							</div>
+							</div> */}
 
 							<p className='text-lg text-center md:text-left'>
 								{project?.summary}
