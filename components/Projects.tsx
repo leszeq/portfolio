@@ -10,87 +10,53 @@ type Props = {
 
 function Projects({ projects }: Props) {
 	return (
-		<motion.div
-			initial={{
-				opacity: 0,
-			}}
-			whileInView={{
-				opacity: 1,
-			}}
-			transition={{
-				duration: 1.5,
-			}}
-			className='h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0'
-		>
-			<h3 className='absolute top-10 uppercase tracking-[20px] text-gray-500 text-2xl'>
-				Projects
-			</h3>
-			<div className=' relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#ffcccc]/80'>
-				{projects?.map((project, i) => (
-					<div
+		<div className='relative min-h-screen py-32 px-6 md:px-12 max-w-7xl mx-auto'>
+			<div className='flex flex-col items-center justify-center mb-24'>
+				<h3 className='uppercase tracking-[15px] text-arch-accent text-sm mb-6'>
+					Realizacje
+				</h3>
+				<h2 className='text-4xl md:text-6xl font-serif text-center'>
+					Wybrane <span className='italic font-light'>Projekty</span>
+				</h2>
+			</div>
+
+			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16'>
+				{projects?.map((project) => (
+					<motion.div
 						key={project._id}
-						className='w-screen flex-shrink-0 sanp-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen'
+						initial={{ opacity: 0, y: 50 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8 }}
+						viewport={{ once: true, margin: '-100px' }}
+						className='group cursor-pointer flex flex-col'
 					>
-						<motion.img
-							initial={{
-								y: -300,
-								opacity: 0,
-							}}
-							transition={{
-								duration: 1.2,
-							}}
-							whileInView={{
-								opacity: 1,
-								y: 0,
-							}}
-							viewport={{
-								once: true,
-							}}
-							src={urlFor(project.image).url()}
-							alt='projekt'
-						/>
-						<div className='spacy-y-10 px-0 md:px-10 max-w-6xl'>
-							<h4 className='text-3xl font-semibold text-center'>
-								<span className='underline decoration-[#F7AB0A]/50'>
-									Case Study: {i + 1} of {projects.length}:
-								</span>{' '}
-								{project?.title}
-							</h4>
-							<br />
-							<h1>
-								<p className='text-center'>
-									<a
-										href={project?.linkToBuild}
-										className='underline '
-										target={'_blank'}
-										rel='noreferrer'
-									>
-										For more details click here
-									</a>
-								</p>
-							</h1>
-
-							{/* <div className='flex items-center justify-center'>
-								{project?.technologies.map((technology) => (
-									// eslint-disable-next-line @next/next/no-img-element
-									<img
-										className='h-10 w-10 m-2'
-										key={technology?._id}
-										// src={urlFor(technology?.image).url()}
-										alt='photo for technology'
-									/>
-								))}
-							</div> */}
-
-							<p className='text-lg text-center md:text-left'>
-								{project?.summary}
-							</p>
+						<div className='relative w-full aspect-[4/5] overflow-hidden bg-arch-accent/10 mb-6'>
+							{project?.image && (
+								<img
+									src={urlFor(project.image).url()}
+									alt={project.title}
+									className='w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105 filter grayscale hover:grayscale-0'
+								/>
+							)}
 						</div>
-					</div>
+						<h4 className='text-xl font-serif tracking-wide mb-2 uppercase'>
+							{project?.title}
+						</h4>
+						<p className='text-sm font-light text-arch-text/70 line-clamp-3 mb-4'>
+							{project?.summary}
+						</p>
+						<a
+							href={project?.linkToBuild}
+							target='_blank'
+							rel='noreferrer'
+							className='text-xs uppercase tracking-widest text-arch-accent group-hover:text-arch-text transition-colors'
+						>
+							Zobacz detale &rarr;
+						</a>
+					</motion.div>
 				))}
 			</div>
-			<div className='w-full absolute top-[30%] bg-[#F7AB0A]/10 left-0 h-[500px] -skew-y-12' />
-		</motion.div>
+		</div>
 	);
 }
 

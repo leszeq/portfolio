@@ -1,13 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+	body {
+		@apply bg-arch-bg text-arch-text font-sans antialiased;
+	}
+	h1, h2, h3, h4, h5, h6 {
+		@apply font-serif;
+	}
+}
+
 @layer components {
 	.heroButton {
-		@apply px-6 py-2 border border-[#242424] rounded-full uppercase text-xs
-        tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40;
+		@apply px-6 py-2 border border-arch-text text-arch-text uppercase text-xs tracking-widest transition-all hover:bg-arch-text hover:text-white duration-300;
 	}
 	.contactInput {
-		@apply outline-none bg-slate-400/10 rounded-sm border-b px-6 py-4 border-[#242424] text-gray-500 placeholder-gray-500 transition-all focus:border-[#F7AB0A]/40 focus:text-[#F7AB0A] hover:border-[#F7AB0A]/40;
+		@apply outline-none bg-transparent rounded-none border-b border-arch-text/70 px-4 py-3 text-arch-text placeholder-arch-text/50 transition-all focus:border-arch-text hover:border-arch-text;
 	}
 }

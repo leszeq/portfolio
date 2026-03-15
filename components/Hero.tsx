@@ -1,55 +1,47 @@
 import React from 'react';
-import { Cursor, useTypewriter } from 'react-simple-typewriter';
+import { motion } from 'framer-motion';
 import { PageInfo } from '../typings';
-import Link from 'next/link';
-import BackgroundCircles from './BackgroundCircles';
 import { urlFor } from '../sanity';
-import Image from 'next/image';
 
 type Props = {
 	pageInfo: PageInfo;
 };
 
 export default function Hero({ pageInfo }: Props) {
-	const [text, count] = useTypewriter({
-		words: [
-			`Hi, my name is ${pageInfo?.name}`,
-			'A girl who loves architecture',
-			'And here is my portfolio',
-		],
-		loop: true,
-		delaySpeed: 2000,
-	});
 	return (
-		<div className='h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden'>
-			<BackgroundCircles />
-			<img
-				className='relative rounded-full h-32 w-32 mx-auto object-cover'
-				src={urlFor(pageInfo?.heroImage).url()}
-				alt='photo me dom betonowy'
-			/>
-			<div className='z-20'>
-				<h2 className=' text-sm uppercase text-gray-500 pb-2 tracking-[15px]'>
-					{pageInfo?.role}
-				</h2>
-				<h1 className=' text-5xl lg:text-6xl font-semibold px-10'>
-					<span className='mr-3'>{text}</span>
-					<Cursor cursorColor='pink' />
-				</h1>
-				<div className='pt-5'>
-					<Link href='#about'>
-						<button className='heroButton'>About</button>
-					</Link>
-					<Link href='#experience'>
-						<button className='heroButton'>Education</button>
-					</Link>
-					<Link href='#skills'>
-						<button className='heroButton'>Skills</button>
-					</Link>
-					<Link href='#projects'>
-						<button className='heroButton'>Projects</button>
-					</Link>
-				</div>
+		<div className='relative h-screen flex flex-col items-center justify-center text-center overflow-hidden'>
+			{/* High-impact background image */}
+			<div className='absolute inset-0 z-0 bg-arch-bg flex items-center justify-center'>
+				{pageInfo?.heroImage ? (
+					<img
+						src={urlFor(pageInfo?.heroImage).url()}
+						alt='Modern Interior Design'
+						className='w-full h-full object-contain scale-[0.95] filter brightness-[0.85] transition-transform duration-1000'
+					/>
+				) : (
+					<div className='w-full h-full bg-[#E5E5E5]' /> // Fallback placeholder
+				)}
+			</div>
+
+			{/* Minimalist Hero Overlay Text */}
+			<div className='relative z-10 flex flex-col items-center justify-center px-4 w-full h-full bg-black/40'>
+				<motion.div
+					initial={{ opacity: 0, y: 30 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 1.2, delay: 0.4 }}
+					className='space-y-6 max-w-4xl drop-shadow-lg'
+				>
+					<h2 className='text-sm uppercase text-arch-bg/80 tracking-[10px] sm:tracking-[15px]'>
+						{pageInfo?.role || 'Architektura & Wnętrza'}
+					</h2>
+					<h1 className='text-5xl sm:text-6xl md:text-8xl font-serif text-arch-bg leading-tight mx-auto'>
+						Architektura<br />
+						<span className='italic font-light'>Wnętrz</span>
+					</h1>
+					<p className='text-arch-bg/80 text-sm md:text-base font-light tracking-widest pt-4'>
+						ELEVATED, FUNCTIONAL DESIGN FOR MODERN LIVING.
+					</p>
+				</motion.div>
 			</div>
 		</div>
 	);

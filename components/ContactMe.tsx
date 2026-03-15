@@ -22,66 +22,74 @@ function ContactMe({}: Props) {
 	};
 
 	return (
-		<div className='h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center'>
-			<h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>
-				Contact
-			</h3>
-
-			<div className='flex flex-col space-y-2'>
-				<h4 className='text-4xl font-semibold text-center'>
-					I have got just what you need{' '}
-					<span className='decoration-[#F7AB0A]/50 underline'>Lets Talk</span>
-				</h4>
-				<div className='space-y-10'>
-					<div className='flex items-center space-x-5 justify-center'>
-						<PhoneIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse' />
-						<p className='text-2xl'>+48 888 449 002</p>
+		<div className='relative min-h-screen flex flex-col items-center justify-center max-w-7xl px-6 md:px-12 mx-auto py-24'>
+			<div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-16'>
+				{/* Info Column */}
+				<div className='flex flex-col space-y-8'>
+					<div>
+						<h3 className='uppercase tracking-[15px] text-arch-accent text-sm mb-4'>
+							Kontakt
+						</h3>
+						<h4 className='text-3xl md:text-5xl font-serif leading-tight'>
+							Porozmawiajmy o <br />
+							<span className='italic font-light text-arch-accent'>Twoim projekcie</span>
+						</h4>
 					</div>
-					<div className='flex items-center space-x-5 justify-center'>
-						<EnvelopeIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse' />
-						<p className='text-2xl'>arch.nataliaf@gmail.com</p>
-					</div>
-					<div className='flex items-center space-x-5 justify-center'>
-						<MapPinIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse' />
-						<p className='text-2xl'>
-							Nagoszewka Druga 14, 07-300 Ostrów Mazowiecka, Poland
-						</p>
+					
+					<div className='space-y-6 pt-8 font-light text-arch-text'>
+						<div className='flex items-center space-x-4'>
+							<PhoneIcon className='text-arch-accent h-5 w-5' />
+							<p className='text-lg'>+48 888 449 002</p>
+						</div>
+						<div className='flex items-center space-x-4'>
+							<EnvelopeIcon className='text-arch-accent h-5 w-5' />
+							<p className='text-lg'>arch.nataliaf@gmail.com</p>
+						</div>
+						<div className='flex items-center space-x-4'>
+							<MapPinIcon className='text-arch-accent h-5 w-5' />
+							<p className='text-lg max-w-[250px]'>
+								Nagoszewka Druga 14, 07-300 Ostrów Mazowiecka, Poland
+							</p>
+						</div>
 					</div>
 				</div>
 
-				<form
-					onSubmit={handleSubmit(onSubmit)}
-					className='flex flex-col space-y-2 w-fit mx-auto'
-				>
-					<div className='flex space-x-2'>
+				{/* Form Column */}
+				<div className='flex flex-col justify-center'>
+					<form
+						onSubmit={handleSubmit(onSubmit)}
+						className='flex flex-col space-y-6 w-full'
+					>
+						<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+							<input
+								{...register('name')}
+								placeholder='Imię i nazwisko'
+								className='contactInput'
+								type='text'
+							/>
+							<input
+								{...register('email')}
+								placeholder='Adres E-mail'
+								className='contactInput'
+								type='email'
+							/>
+						</div>
 						<input
-							{...register('name')}
-							placeholder='Name'
+							{...register('subject')}
+							placeholder='Temat'
 							className='contactInput'
 							type='text'
 						/>
-						<input
-							{...register('email')}
-							placeholder='Email'
-							className='contactInput'
-							type='email'
+						<textarea
+							{...register('message')}
+							placeholder='Wiadomość / Krótki opis inwestycji'
+							className='contactInput min-h-[150px]'
 						/>
-					</div>
-					<input
-						{...register('subject')}
-						placeholder='Subject'
-						className='contactInput'
-						type='text'
-					/>
-					<textarea
-						{...register('message')}
-						placeholder='Message'
-						className='contactInput'
-					/>
-					<button className='bg-[#F7AB0A] py-5 px-10 rounded-md text-black font-bold text-lg'>
-						Submit
-					</button>
-				</form>
+						<button className='mt-8 self-start px-12 py-4 bg-arch-text text-arch-bg text-sm uppercase tracking-widest hover:bg-arch-accent transition-all duration-300'>
+							Wyślij Wiadomość
+						</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	);

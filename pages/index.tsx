@@ -9,79 +9,57 @@ import Hero from '../components/Hero';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
 import WorkExperience from '../components/WorkExperience';
-import { Experience, PageInfo, Project, Skill, Social } from '../typings';
+import { Experience, PageInfo, Project, Social } from '../typings';
 import { fetchExperiences } from '../utils/fetchExperiences';
 import { fetchPageInfo } from '../utils/fetchPageInfo';
 import { fetchProject } from '../utils/fetchProjects';
-import { fetchSkills } from '../utils/fetchSkills';
 import { fetchSocial } from '../utils/fetchSocials';
 
 type Props = {
 	pageInfo: PageInfo;
 	experiences: Experience[];
-	skills: Skill[];
 	projects: Project[];
 	socials: Social[];
 };
 
-const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
+const Home = ({ pageInfo, experiences, projects, socials }: Props) => {
 	return (
-		<div className='bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#ffcccc]/80'>
+		<div className='w-full scrollbar scrollbar-track-arch-bg scrollbar-thumb-arch-text/20'>
 			<Head>
-				<title>{pageInfo?.name} - portfolio</title>
+				<title>{`${pageInfo?.name || 'My'} - portfolio`}</title>
 			</Head>
 			{/* Header */}
-			<Header socials={socials} />
+			<Header />
 
 			{/*Hero*/}
-			<section id='hero' className='snap-start'>
+			<section id='hero'>
 				<Hero pageInfo={pageInfo} />
 			</section>
 
 			{/*About*/}
-			<section id='about' className='snap-center'>
+			<section id='about'>
 				<About pageInfo={pageInfo} />
 			</section>
 
-			{/*Experience*/}
-			<section id='experience' className='snap-center'>
+			{/*Oferta (dawniej Experience)*/}
+			<section id='oferta'>
 				<WorkExperience experiences={experiences} />
 			</section>
-			{/*Skills*/}
-			<section id='skills' className='snap-start'>
-				<Skills skills={skills} />
-			</section>
-
 			{/*Projects*/}
-			<section id='projects' className='snap-start'>
+			<section id='projects'>
 				<Projects projects={projects} />
 			</section>
 
 			{/*Contact Me*/}
-			<section id='contact' className='snap-start'>
+			<section id='contact'>
 				<ContactMe />
 			</section>
 
 			<Link href='#hero'>
-				<footer className='sticky bottom-5 w-full cursor-pointer'>
-					<div className='flex items-center justify-center'>
-						<motion.img
-							initial={{
-								opacity: 0,
-							}}
-							animate={{
-								scale: [1, 2, 2, 3, 1],
-								opacity: [0.1, 0.2, 0.4, 0.8, 0.1, 1.0],
-								borderRadius: ['20%', '20%', '50%', '80%', '20%'],
-							}}
-							transition={{
-								duration: 2.5,
-							}}
-							className='h-5 w-5 rounded-full filter grayscale hover:grayscale-0 cursor-pointer animate-bounce'
-							src='https://www.rafeeg.app/api/Modules/Dashboard/Resources/assets/metronic/plugins/keenthemes-icons/svg/031-bold-double-arrow-up.svg'
-							alt='footer photo'
-						/>
-					</div>
+				<footer className='py-12 w-full cursor-pointer flex justify-center'>
+					<span className='text-xs uppercase tracking-[5px] text-arch-accent hover:text-arch-text transition-colors duration-300'>
+						Wróć na górę
+					</span>
 				</footer>
 			</Link>
 		</div>
@@ -93,7 +71,6 @@ export default Home;
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const pageInfo: PageInfo = await fetchPageInfo();
 	const experiences: Experience[] = await fetchExperiences();
-	const skills: Skill[] = await fetchSkills();
 	const projects: Project[] = await fetchProject();
 	const socials: Social[] = await fetchSocial();
 
@@ -101,7 +78,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 		props: {
 			pageInfo,
 			experiences,
-			skills,
 			projects,
 			socials,
 		},
