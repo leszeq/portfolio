@@ -15,9 +15,6 @@ function Projects({ projects }: Props) {
 				<h3 className='uppercase tracking-[15px] text-arch-accent text-sm mb-6'>
 					Realizacje
 				</h3>
-				<h2 className='text-4xl md:text-6xl font-serif text-center'>
-					Wybrane <span className='italic font-light'>Projekty</span>
-				</h2>
 			</div>
 
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16'>

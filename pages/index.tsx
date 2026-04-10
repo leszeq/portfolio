@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
-import WorkExperience from '../components/WorkExperience';
+import Offer from '../components/Offer';
 import { Experience, PageInfo, Project, Social } from '../typings';
 import { fetchExperiences } from '../utils/fetchExperiences';
 import { fetchPageInfo } from '../utils/fetchPageInfo';
@@ -29,11 +29,11 @@ const Home = ({ pageInfo, experiences, projects, socials }: Props) => {
 				<title>{`${pageInfo?.name || 'My'} - portfolio`}</title>
 			</Head>
 			{/* Header */}
-			<Header />
+			<Header socials={socials} />
 
 			{/*Hero*/}
 			<section id='hero'>
-				<Hero pageInfo={pageInfo} />
+				<Hero pageInfo={pageInfo} socials={socials} />
 			</section>
 
 			{/*About*/}
@@ -41,9 +41,9 @@ const Home = ({ pageInfo, experiences, projects, socials }: Props) => {
 				<About pageInfo={pageInfo} />
 			</section>
 
-			{/*Oferta (dawniej Experience)*/}
+			{/*Oferta*/}
 			<section id='oferta'>
-				<WorkExperience experiences={experiences} />
+				<Offer />
 			</section>
 			{/*Projects*/}
 			<section id='projects'>
@@ -52,7 +52,7 @@ const Home = ({ pageInfo, experiences, projects, socials }: Props) => {
 
 			{/*Contact Me*/}
 			<section id='contact'>
-				<ContactMe />
+				<ContactMe experiences={experiences} />
 			</section>
 
 			<Link href='#hero'>
