@@ -54,7 +54,7 @@ export default defineType({
 		defineField({
 			name: 'socials',
 			title: 'Socials',
-			type: 'array',
+			type: 'array' as const,
 			of: [{ type: 'reference', to: { type: 'social' } }],
 		}),
 	],
