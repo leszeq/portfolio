@@ -26,7 +26,7 @@ export default defineType({
     defineField({
       name: 'technologies',
       title: 'Technologies',
-      type: 'array',
+      type: 'array' as const,
       of: [{type: 'reference', to: {type: 'skill'}}],
     }),
     defineField({

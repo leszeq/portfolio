@@ -36,14 +36,14 @@ export default defineType({
 		defineField({
 			name: 'technologies',
 			title: 'Technologies',
-			type: 'array',
+			type: 'array' as const,
 			of: [{ type: 'reference', to: { type: 'skill' } }],
 		}),
 		defineField({
 			name: 'points',
 			title: 'Points',
-			type: 'array',
-			of: [{ type: 'string' }],
+			type: 'array' as const,
+			of: [{ type: 'string' as const }],
 		}),
 	],
 });
