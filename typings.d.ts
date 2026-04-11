@@ -55,8 +55,10 @@ export interface Project extends SanityBody {
 	title: string;
 	_type: 'project';
 	image: Image;
+	seoName?: string;
+	fullDescription?: string;
+	gallery?: Image[];
 	linkToBuild: string;
-	// pdfFile: File
 	summary: string;
 	technologies: Technology[];
 }

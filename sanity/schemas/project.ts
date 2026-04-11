@@ -19,9 +19,25 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'seoName',
+      title: 'Nazwa pliku (SEO) - ukryta dla użytkownika',
+      type: 'string',
+    }),
+    defineField({
       name: 'summary',
-      title: 'Summary',
+      title: 'Summary (Short description)',
       type: 'text',
+    }),
+    defineField({
+      name: 'fullDescription',
+      title: 'Full Description (Project Details)',
+      type: 'text',
+    }),
+    defineField({
+      name: 'gallery',
+      title: 'Gallery Expansion',
+      type: 'array' as const,
+      of: [{ type: 'image', options: { hotspot: true } }],
     }),
     defineField({
       name: 'technologies',

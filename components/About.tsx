@@ -36,16 +36,16 @@ export default function About({ pageInfo }: Props) {
 				{/* Text Column */}
 				<div className='space-y-8 md:space-y-12'>
 					<h3 className='uppercase tracking-[15px] text-arch-accent text-sm'>
-						O nas
+						O mnie
 					</h3>
 					<h4 className='text-3xl md:text-5xl font-serif leading-tight'>
-						Kreujemy przestrzenie, <br />
+						Tworzę przestrzenie, <br />
 						<span className='italic font-light text-arch-accent'>które inspirują.</span>
 					</h4>
 					<p className='text-sm md:text-base leading-relaxed text-arch-text/80 font-light max-w-lg'>
 						{pageInfo?.backgroundInformation}
 					</p>
-					
+
 					<div className='pt-8'>
 						<a href='#contact' className='inline-block border-b border-arch-text pb-1 uppercase tracking-widest text-xs hover:text-arch-accent hover:border-arch-accent transition-all'>
 							Skontaktuj się z nami
