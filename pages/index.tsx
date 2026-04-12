@@ -36,20 +36,39 @@ const Home = ({ pageInfo, experiences, projects, socials }: Props) => {
 		},
 		'address': {
 			'@type': 'PostalAddress',
+			'addressRegion': 'Mazowieckie',
 			'addressCountry': 'PL'
-		}
+		},
+		'areaServed': [
+			{
+				'@type': 'Country',
+				'name': 'Poland'
+			},
+			{
+				'@type': 'City',
+				'name': 'Warszawa'
+			},
+			{
+				'@type': 'City',
+				'name': 'Ostrów Mazowiecka'
+			},
+			{
+				'@type': 'City',
+				'name': 'Wyszków'
+			}
+		]
 	};
 
 	return (
 		<div className='w-full scrollbar scrollbar-track-arch-bg scrollbar-thumb-arch-text/20'>
 			<Head>
 				<title>Projektowanie Wnętrz | Natalia Fidura STUDIO</title>
-				<meta name='description' content='Profesjonalne projektowanie i aranżacja wnętrz. Kompleksowe usługi od koncepcji po wizualizacje. Tworzenie przestrzeni, które inspirują – Natalia Fidura Studio.' />
-				<meta name='keywords' content='projektowanie wnętrz, architekt wnętrz, aranżacja wnętrz, projektowanie domów, architekt, wizualizacje wnętrz, Natalia Fidura, Fidura Studio' />
+				<meta name='description' content='Profesjonalne projektowanie i aranżacja wnętrz. Kompleksowe usługi stacjonarnie (Warszawa, Ostrów Mazowiecka, Wyszków) oraz projekty online w całej Polsce. Natalia Fidura Studio.' />
+				<meta name='keywords' content='projektowanie wnętrz, architekt wnętrz, projektowanie domów, darmowe konsultacje on-line, aranżacja wnętrz Warszawa, architekt Ostrów Mazowiecka, Wyszków, projekty online Polska, biuro projektowe Mazowieckie, architektura wnętrz, Natalia Fidura, Fidura Studio' />
 				
 				{/* Open Graph (Facebook/Social) */}
 				<meta property='og:title' content='Projektowanie Wnętrz | Natalia Fidura STUDIO' />
-				<meta property='og:description' content='Profesjonalne projektowanie i aranżacja wnętrz. Tworzymy przestrzenie, które inspirują. Zobacz nasze realizacje i ofertę.' />
+				<meta property='og:description' content='Projektowanie i aranżacja wnętrz: Warszawa, Ostrów Mazowiecka, Wyszków oraz projekty zdalne online dla klientów z całej Polski. Zobacz naszą ofertę.' />
 				<meta property='og:url' content='https://fidurastudio.pl' />
 				<meta property='og:type' content='website' />
 				<meta property='og:site_name' content='Fidura Studio' />
