@@ -22,10 +22,46 @@ type Props = {
 };
 
 const Home = ({ pageInfo, experiences, projects, socials }: Props) => {
+	const schemaData = {
+		'@context': 'https://schema.org',
+		'@type': 'ArchitecturalFirm',
+		'name': 'Fidura Studio',
+		'url': 'https://fidurastudio.pl',
+		'description': 'Profesjonalne projektowanie i aranżacja wnętrz. Tworzymy przestrzenie, które inspirują.',
+		'contactPoint': {
+			'@type': 'ContactPoint',
+			'telephone': '+48888449002',
+			'email': 'arch.nataliaf@gmail.com',
+			'contactType': 'customer service'
+		},
+		'address': {
+			'@type': 'PostalAddress',
+			'addressCountry': 'PL'
+		}
+	};
+
 	return (
 		<div className='w-full scrollbar scrollbar-track-arch-bg scrollbar-thumb-arch-text/20'>
 			<Head>
-				<title>{`${pageInfo?.name || 'My'} - portfolio`}</title>
+				<title>Projektowanie Wnętrz | Natalia Fidura STUDIO</title>
+				<meta name='description' content='Profesjonalne projektowanie i aranżacja wnętrz. Kompleksowe usługi od koncepcji po wizualizacje. Tworzenie przestrzeni, które inspirują – Natalia Fidura Studio.' />
+				<meta name='keywords' content='projektowanie wnętrz, architekt wnętrz, aranżacja wnętrz, projektowanie domów, architekt, wizualizacje wnętrz, Natalia Fidura, Fidura Studio' />
+				
+				{/* Open Graph (Facebook/Social) */}
+				<meta property='og:title' content='Projektowanie Wnętrz | Natalia Fidura STUDIO' />
+				<meta property='og:description' content='Profesjonalne projektowanie i aranżacja wnętrz. Tworzymy przestrzenie, które inspirują. Zobacz nasze realizacje i ofertę.' />
+				<meta property='og:url' content='https://fidurastudio.pl' />
+				<meta property='og:type' content='website' />
+				<meta property='og:site_name' content='Fidura Studio' />
+				{/* W przyszłości, gdy zdefiniujesz default_seo_image w Sanity, można tu wrzucić og:image */}
+
+				<link rel='canonical' href='https://fidurastudio.pl' />
+				
+				{/* JSON-LD Structured Data Schema */}
+				<script
+					type='application/ld+json'
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+				/>
 			</Head>
 			{/* Header */}
 			<Header socials={socials} />
